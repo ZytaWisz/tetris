@@ -10,6 +10,7 @@ import com.epam.prejap.tetris.player.HumanPlayer;
 import com.epam.prejap.tetris.player.Player;
 import com.epam.prejap.tetris.player.RandomPlayer;
 
+import java.util.Arrays;
 
 class Tetris {
     private final Playfield playfield;
@@ -79,17 +80,25 @@ class Tetris {
         var feed = new BlockFeed();
         var printer = new Printer(System.out);
         var playfield = new Playfield(rows, cols, feed, printer);
-        var game = new Tetris(playfield, new Waiter(delay), player);
+
+        if (parseArgs(args, "addRandomBlocks")){
+            playfield.addRandomBlocks();
+        }
+
+        var game = new Tetris(playfield, new Waiter(delay), new RandomPlayer());
 
         var score = game.play();
 
         SavedScore savedScore = new SavedScore("score_list.json");
         System.out.println(savedScore.toString());
-      
+
         LOGGER.trace("Printing the score");
         System.out.println("Score: " + score.points());
         savedScore.writeSavedScore(score.points());
         LOGGER.info("Exiting te game");
 
+    private static boolean parseArgs(String[] args, String argumentName) {
+        return Arrays.stream(args).anyMatch(s -> s.equals(argumentName));
     }
+
 }

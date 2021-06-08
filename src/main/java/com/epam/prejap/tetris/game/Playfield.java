@@ -5,6 +5,8 @@ import com.epam.prejap.tetris.block.BlockFeed;
 import com.epam.prejap.tetris.logger.Logger;
 
 
+import java.util.Random;
+
 public class Playfield {
     private static final Logger LOGGER = Logger.getLogger(Playfield.class);
 
@@ -180,6 +182,23 @@ public class Playfield {
                     action.act(i, j, dot);
                 }
             }
+        }
+    }
+
+    public void addRandomBlocks() {
+        var random=new Random();
+        for (int i = 0; i <3 ; i++) {
+            block=feed.nextBlock();
+            col= random.nextInt(cols-block.cols()+1);
+            row=0;
+            forEachBrick((k, j, dot) -> grid[row + k][col + j] = dot);
+            boolean moved;
+            do {
+                forEachBrick((k, j, dot) -> grid[row + k][col + j] = 0);
+                moved=moveDown();
+                forEachBrick((k, j, dot) -> grid[row + k][col + j] = dot);
+            } while (moved);
+
         }
     }
 
