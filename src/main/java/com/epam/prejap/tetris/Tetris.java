@@ -81,7 +81,7 @@ class Tetris {
         var printer = new Printer(System.out);
         var playfield = new Playfield(rows, cols, feed, printer);
 
-        if (parseArgs(args, "addRandomBlocks")){
+        if (parseArgs(args, "addRandomBlocks")) {
             playfield.addRandomBlocks();
         }
 
@@ -97,6 +97,11 @@ class Tetris {
         savedScore.writeSavedScore(score.points());
         LOGGER.info("Exiting te game");
 
+    /**
+     * Method checks if commend line arguments contain desired argument.
+     *
+     * @author Zyta Wiszniewska
+     */
     private static boolean parseArgs(String[] args, String argumentName) {
         return Arrays.stream(args).anyMatch(s -> s.equals(argumentName));
     }

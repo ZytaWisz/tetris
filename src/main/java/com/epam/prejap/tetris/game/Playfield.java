@@ -185,21 +185,27 @@ public class Playfield {
         }
     }
 
-    public void addRandomBlocks() {
-        var random=new Random();
-        for (int i = 0; i <3 ; i++) {
-            block=feed.nextBlock();
-            col= random.nextInt(cols-block.cols()+1);
-            row=0;
+    /**
+     * Method adds three random blocks to the bottom of the playfield
+     *
+     * @author Zyta Wiszniewska
+     */
+    public byte[][] addRandomBlocks() {
+        var random = new Random();
+        for (int i = 0; i < 3; i++) {
+            block = feed.nextBlock();
+            col = random.nextInt(cols - block.cols() + 1);
+            row = 0;
             forEachBrick((k, j, dot) -> grid[row + k][col + j] = dot);
             boolean moved;
             do {
                 forEachBrick((k, j, dot) -> grid[row + k][col + j] = 0);
-                moved=moveDown();
+                moved = moveDown();
                 forEachBrick((k, j, dot) -> grid[row + k][col + j] = dot);
             } while (moved);
 
         }
+        return grid;
     }
 
     private interface BrickAction {
