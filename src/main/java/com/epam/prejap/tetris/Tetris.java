@@ -98,7 +98,7 @@ class Tetris {
         LOGGER.info("Exiting te game");
 
     /**
-     * Method checks if commend line arguments contain desired argument.
+     * Method checks if command line arguments contain desired argument.
      *
      * @author Zyta Wiszniewska
      */
