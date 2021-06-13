@@ -21,13 +21,16 @@ public class Playfield {
     private int col;
     private Color color;
 
-    public Playfield(int rows, int cols, BlockFeed feed, Printer printer) {
-        this.rows = rows;
-        this.cols = cols;
-        this.feed = feed;
-        this.printer = printer;
+    public Playfield(PlayFieldParameters playFieldParameters) {
+        this.rows = playFieldParameters.rows();
+        this.cols = playFieldParameters.cols();
+        this.feed = playFieldParameters.feed();
+        this.printer = playFieldParameters.printer();
         grid = new Grid(this.rows, this.cols);
         LOGGER.trace("New {} object is created with {} rows and {} columns", getClass().getSimpleName(), rows, cols);
+        if (playFieldParameters.isWithRandomBlocks()){
+            addRandomBlocks();
+        }
     }
 
     public void nextBlock() {
@@ -190,7 +193,7 @@ public class Playfield {
      *
      * @author Zyta Wiszniewska
      */
-    public byte[][] addRandomBlocks() {
+    private void addRandomBlocks() {
         var random = new Random();
         for (int i = 0; i < 3; i++) {
             block = feed.nextBlock();
@@ -205,6 +208,9 @@ public class Playfield {
             } while (moved);
 
         }
+    }
+
+    public byte[][] getGrid() {
         return grid;
     }
 

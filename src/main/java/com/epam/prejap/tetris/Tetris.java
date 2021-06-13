@@ -79,11 +79,9 @@ class Tetris {
 
         var feed = new BlockFeed();
         var printer = new Printer(System.out);
-        var playfield = new Playfield(rows, cols, feed, printer);
+        boolean withRandomBlocks = parseArgs(args, "addRandomBlocks");
 
-        if (parseArgs(args, "addRandomBlocks")) {
-            playfield.addRandomBlocks();
-        }
+        var playfield = new Playfield(new PlayFieldParameters(rows, cols, feed, printer, withRandomBlocks));
 
         var game = new Tetris(playfield, new Waiter(delay), new RandomPlayer());
 
@@ -99,7 +97,8 @@ class Tetris {
 
     /**
      * Method checks if command line arguments contain desired argument.
-     *
+     * @param args table containing command line arguments
+     * @param argumentName name of the argument to check its presence in the {@code args} table
      * @author Zyta Wiszniewska
      */
     private static boolean parseArgs(String[] args, String argumentName) {
