@@ -11,7 +11,7 @@ import java.util.stream.IntStream;
 public class PlayfieldTest {
 
     @Test
-    public void shouldReturnThreeRandomBlocksAtTheBottomOfThePlayfield() {
+    public void shouldAddThreeRandomBlocksToThePlayfield() {
 
         //given
         Playfield playfield = new Playfield(new PlayFieldParameters(20, 10, new BlockFeed(), new Printer(System.out), true));
