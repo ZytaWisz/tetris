@@ -25,5 +25,4 @@ public class PlayfieldTest {
                 .mapToInt(Integer::intValue)
                 .sum() >= 12);
     }
-
 }
