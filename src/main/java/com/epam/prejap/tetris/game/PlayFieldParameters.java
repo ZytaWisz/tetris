@@ -6,7 +6,6 @@ public record PlayFieldParameters(
         int rows,
         int cols,
         BlockFeed feed,
-        Printer printer,
-        boolean isWithRandomBlocks) {
+        Printer printer){
 }
 
