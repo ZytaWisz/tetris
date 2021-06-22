@@ -3,6 +3,11 @@ package com.epam.prejap.tetris.game;
 import com.epam.prejap.tetris.block.Block;
 import com.epam.prejap.tetris.block.BlockFeed;
 
+/**
+ * Class was created to extract common code from concrete classes to avoid code duplication
+ *
+ * @author Zyta Wiszniewska
+ */
 public abstract class AbstractPlayfield implements Playfield {
     protected final byte[][] grid;
     protected final int rows;
