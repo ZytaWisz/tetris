@@ -28,6 +28,11 @@ public class BlocksShapesData {
                 {0, Color.BLUE.id, Color.BLUE.id},
                 {Color.BLUE.id, Color.BLUE.id, 0}
         });
+        put(JBlock::new, new byte[][]{
+                {0, 1},
+                {0, 1},
+                {1, 1}
+        });
         put(OBlock::new, new byte[][]{
                 {Color.RED.id, Color.RED.id},
                 {Color.RED.id, Color.RED.id}

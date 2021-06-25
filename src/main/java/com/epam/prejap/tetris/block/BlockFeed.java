@@ -13,6 +13,7 @@ public class BlockFeed {
     private final List<Supplier<Block>> blocks = List.of(
             HBlock::new,
             IBlock::new,
+            JBlock::new,
             OBlock::new,
             SBlock::new,
             TBlock::new,
