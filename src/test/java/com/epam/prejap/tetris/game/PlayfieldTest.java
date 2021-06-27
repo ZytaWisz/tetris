@@ -30,7 +30,7 @@ public class PlayfieldTest {
         Field rowField = getAccessToRowFieldInRowClass();
         Field lines = getAccessToLinesFieldInGrid();
 
-        Playfield playfield = new Playfield(rows, cols, new BlockFeed(), new Printer(System.out));
+        Playfield playfield = new GenericPlayfield(new PlayFieldParameters(rows, cols, new BlockFeed(), new Printer(System.out)));
         Grid.Row notFilledRow = new Grid.Row(cols);
         rowField.set(notFilledRow, List.of(0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1));
         Grid.Row filledRow = new Grid.Row(cols);
@@ -61,7 +61,7 @@ public class PlayfieldTest {
         Field rowField = getAccessToRowFieldInRowClass();
         Field lines = getAccessToLinesFieldInGrid();
 
-        Playfield playfield = new Playfield(rows, cols, new BlockFeed(), new Printer(System.out));
+        Playfield playfield = new GenericPlayfield(new PlayFieldParameters(rows, cols, new BlockFeed(), new Printer(System.out)));
         Grid.Row notFilledRow = new Grid.Row(cols);
         rowField.set(notFilledRow, List.of(0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1));
         Grid expectedGrid = new Grid(rows, cols);
@@ -95,7 +95,7 @@ public class PlayfieldTest {
     }
 
     private Field getAccessToGridFieldInPlayfield() throws ReflectiveOperationException {
-        Field gridField = Playfield.class.getDeclaredField("grid");
+        Field gridField = AbstractPlayfield.class.getDeclaredField("grid");
         gridField.setAccessible(true);
         return gridField;
     }

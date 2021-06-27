@@ -14,7 +14,7 @@ import static java.util.Arrays.asList;
  *
  * @author Miatowicz Natalia
  */
-class Grid {
+public class Grid {
     private static final Logger LOGGER = Logger.getLogger(Grid.class);
     private final List<Row> lines;
     final int rowsNumber;
@@ -33,7 +33,7 @@ class Grid {
      *
      * @return unmodifiable list of rows
      */
-    List<Row> getLines() {
+    public List<Row> getLines() {
         return Collections.unmodifiableList(lines);
     }
 
@@ -113,7 +113,7 @@ class Grid {
     /**
      * Represents one line of the grid.
      */
-    static class Row {
+    public static class Row {
         private final List<Integer> row;
 
         Row(int columns) {

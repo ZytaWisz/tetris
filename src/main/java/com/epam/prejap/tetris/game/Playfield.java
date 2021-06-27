@@ -5,9 +5,11 @@ public interface Playfield {
 
     boolean move(Move move);
 
-    byte[][] getGrid();
+    Grid getGrid();
+
+    void findAndRemoveFilledLines();
 
     public interface BrickAction {
-        void act(int i, int j, byte dot);
+        void act(int i, int j, int dot);
     }
 }

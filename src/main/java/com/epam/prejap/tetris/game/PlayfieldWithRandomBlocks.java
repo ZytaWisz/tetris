@@ -19,12 +19,12 @@ public class PlayfieldWithRandomBlocks extends AbstractPlayfield {
             block = feed.nextBlock();
             col = random.nextInt(cols - block.cols() + 1);
             row = 0;
-            forEachBrick((k, j, dot) -> grid[row + k][col + j] = dot);
+            forEachBrick((k, j, dot) -> grid.replaceValue(row + k,col + j, dot));
             boolean moved;
             do {
-                forEachBrick((k, j, dot) -> grid[row + k][col + j] = 0);
+                forEachBrick((k, j, dot) -> grid.replaceValue(row + k,col + j,0));
                 moved = moveDown();
-                forEachBrick((k, j, dot) -> grid[row + k][col + j] = dot);
+                forEachBrick((k, j, dot) -> grid.replaceValue(row + k,col + j,dot));
             } while (moved);
 
         }

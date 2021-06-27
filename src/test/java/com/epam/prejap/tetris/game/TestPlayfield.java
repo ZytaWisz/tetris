@@ -33,7 +33,7 @@ public class TestPlayfield {
     public void initializePlayfield() {
         feed = new BlockFeed();
         printer = new Printer(System.out);
-        playfield = new Playfield(rows, cols, feed, printer);
+        playfield = new GenericPlayfield(new PlayFieldParameters(rows, cols, feed, printer));
     }
 
     @DataProvider

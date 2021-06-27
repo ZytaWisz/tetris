@@ -1,10 +1,7 @@
 package com.epam.prejap.tetris;
 
 import com.epam.prejap.tetris.block.BlockFeed;
-import com.epam.prejap.tetris.game.Move;
-import com.epam.prejap.tetris.game.Playfield;
-import com.epam.prejap.tetris.game.Printer;
-import com.epam.prejap.tetris.game.Waiter;
+import com.epam.prejap.tetris.game.*;
 import com.epam.prejap.tetris.logger.Logger;
 import com.epam.prejap.tetris.player.HumanPlayer;
 import com.epam.prejap.tetris.player.Player;
@@ -95,7 +92,7 @@ class Tetris {
         System.out.println("Score: " + score.points());
         savedScore.writeSavedScore(score.points());
         LOGGER.info("Exiting te game");
-
+    }
     /**
      * Method checks if command line arguments contain desired argument.
      *
